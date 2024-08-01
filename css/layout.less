@@ -1,0 +1,120 @@
+//color
+@org: #ff8101;
+@red: #ff0000;
+@turb: #00a9ba;
+@ylw: #ffe228;
+//config
+//=>header
+@header_font_size: 16px;
+@header_font_color: #000000;
+@header_H: 60px;
+@header_H_md: 60px;
+@header_H_sm: 50px;
+@nav_space: 12px; //選單間距
+@nav_theme: @org; //選單色系
+@nav_m: @lg;
+@up_nav_m: (@nav_m + 1);
+//=>浮動按鈕
+@flt_W: 376;
+@flt_H: 83;
+@flt_Cnt: 2; //數量
+@flt_P: 0 * 2px;
+@import "./default/fn.less";
+@import "./default/style.less";
+@import "./default/anime.less";
+@import "./default/const.less";
+@import "./default/obank.less";
+//params
+@maxW: 1200px;
+//all
+body {
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.ctn1 {
+  max-width: @maxW;
+  margin: 0 auto;
+}
+img {
+  display: block;
+}
+//const
+.header {
+  .nav_frame(); //選單
+  .nav_btn(); //漢堡
+  .header_logo {
+    width: 200px;
+  }
+}
+.float_frame {
+  @media(min-width: @up_lg) {
+    > a {
+      transition: 0.3s;
+    }
+    &:hover {
+      > a {
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:not(:hover) {
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+  @media (max-width: @lg) {
+    > a {
+      &._go {
+        background-color: #d6305c;
+      }
+      &._open {
+        background-color: #ff8200;
+      }
+    }
+  }
+}
+//style
+.space_frame {
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.ntc_frame {
+  .ntc_btn {
+    .fcc();
+    cursor: pointer;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 24px;
+    padding: 30px 0;
+    @media(max-width: @sm) {
+      font-size: 22px;
+      padding: 25px 0;
+    }
+    .plus_btn {
+      transform: translateY(1px);
+      margin-left: 15px;
+      .plus(12px);
+      @media(max-width: @sm) {
+        .WH(10px);
+      }
+    }
+  }
+  .ntc_ctn {
+    display: none;
+    padding: 40px 20px;
+    @media(max-width: @sm) {
+      padding: 30px 10px;
+    }
+  }
+  ul {
+    line-height: 1.8;
+    .ul_set(18px);
+    @media(max-width: @sm) {
+      .ul_set(16px);
+    }
+  }
+}

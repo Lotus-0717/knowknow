@@ -1,0 +1,117 @@
+//out: false
+.an_delay(@index, @interval, @duration: 1s) {
+  animation-delay: @duration * @index - @interval * @index;
+}
+//fade
+@keyframes an_none {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.an_fade(@duration) {
+  opacity: 0;
+  animation-duration: @duration;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  &.active {
+    animation-name: an_none;
+  }
+}
+//=>In
+.an_fadeIn(@duration) {
+  .an_fade(@duration);
+}
+.an_fadeIn_active(@duration) {
+  .an_fadeIn(@duration);
+  animation-name: an_none;
+}
+//=>Up
+.an_fadeUp(@duration, @translateY: 40px) {
+  transform: translateY(@translateY);
+  .an_fade(@duration);
+}
+.an_fadeUp_active(@duration, @translateY: 40px) {
+  .an_fadeUp(@duration, @translateY);
+  animation-name: an_none;
+}
+//=>Down
+.an_fadeDown(@duration, @translateY: -40px) {
+  transform: translateY(@translateY);
+  .an_fade(@duration);
+}
+.an_fadeDown_active(@duration, @translateY: -40px) {
+  .an_fadeDown(@duration, @translateY);
+  animation-name: an_none;
+}
+//=>Left
+.an_fadeLeft(@duration, @translateX: 40px) {
+  transform: translateX(@translateX);
+  .an_fade(@duration);
+}
+.an_fadeLeft_active(@duration, @translateX: 40px) {
+  .an_fadeLeft(@duration, @translateX);
+  animation-name: an_none;
+}
+//=>Right
+.an_fadeRight(@duration, @translateX: -40px) {
+  transform: translateX(@translateX);
+  .an_fade(@duration);
+}
+.an_fadeRight_active(@duration, @translateX: -40px) {
+  .an_fadeRight(@duration, @translateX);
+  animation-name: an_none;
+}
+//scroll
+@keyframes an_scroll {
+  0% {
+    height: 0;
+  }
+  40% {
+    height: 100%;
+    transform: translateY(0);
+  }
+  80% {
+    height: 100%;
+    transform: translateY(100%);
+  }
+  100% {
+    height: 100%;
+    transform: translateY(100%);
+  }
+}
+.an_scroll(@color) {
+  overflow: hidden;
+  @media(max-width: @sm) {
+    height: 60px;
+  }
+  &::after{
+    content: "";
+    display: block;
+    width: 1px;
+    background-color: @color;
+    margin: 0 auto;
+    height: 0;
+    animation: an_scroll 3s ease infinite;
+  }
+}
+//slime
+// @keyframes slime {
+//   0%, 90% {
+//     animation-timing-function: linear;
+//   }
+//   10% {
+//     animation-timing-function: cubic-bezier(0, 0.4, 0.4, 1);
+//     transform: translate(0, 5%) scaleY(1.1);
+//   }
+//   45% {
+//     animation-timing-function: cubic-bezier(0.4, 0, 1, 0.6);
+//     transform: translate(0, -6%) scaleY(1);
+//   }
+//   0%, to {
+//     transform: translate(0, 6%) scaleY(0.9);
+//   }
+//   90% {
+//     transform: translate(0, 5%) scaleY(1);
+//   }
+// }

@@ -1,0 +1,216 @@
+//out: false
+//param
+@mb: 1500px;
+@up_mb: (@mb + 1);
+@lg: 1024px;
+@up_lg: (@lg + 1);
+@lt_lg: (@lg - 1);
+@md: 768px;
+@up_md: (@md + 1);
+@lt_md: (@md - 1);
+@sm: 576px;
+@up_sm: (@sm + 1);
+@lt_sm: (@sm - 1);
+
+//fn
+.justify(@text-align-last: left) {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-align-last: @text-align-last;
+}
+.br() {
+  border: 1px solid red;
+}
+.clear() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+.WH(@WH) {
+  width: @WH;
+  height: @WH;
+}
+.vw0(@attr, @px) {
+  @{attr}: @px;
+  @media (max-width: 1920px) {
+    @{attr}: 1vw * (@px / (1920 / 100));
+  }
+}
+.vw(@wW, @attr, @px) {
+  @{attr}: 1vw * (@px / (@wW / 100));
+}
+//
+.room(@val: 0) {
+  position: absolute;
+  top: @val;
+  left: @val;
+  right: @val;
+  bottom: @val;
+}
+.room_f(@val: 0) {
+  position: fixed;
+  top: @val;
+  left: @val;
+  right: @val;
+  bottom: @val;
+}
+//
+.fcc() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//vt
+.vt(@align) {
+  > * {
+    vertical-align: @align;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    vertical-align: @align;
+    width: 0;
+    height: 100%;
+    font-size: 0;
+  }
+}
+.vtc() {
+  .vt(middle);
+}
+.vtb() {
+  .vt(bottom);
+}
+//plus
+.plus(@WH, @color: #000000) {
+  position: relative;
+  .WH(@WH);
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: ~"calc(50% - 1px)";
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: @color;
+    transition: 0.3s ease;
+  }
+  &:not(.active) {
+    &::after {
+      transform: rotate(-90deg);
+    }
+  }
+}
+.plus_color(@color){
+  &::before, &::after {
+    background-color: @color;
+  }
+}
+.plus_H(@H) {
+  @H2: @H / 2;
+  &::before, &::after {
+    height: @H;
+    top: ~"calc(50% - @{H2})";
+  }
+}
+//arrow
+.arrow(@WH, @color) {
+  &::after{
+    content: "";
+    display: block;
+    .WH(@WH);
+    border: 2px solid @color;
+    border-top: none;
+    border-left: none;
+    transition: 0.3s ease;
+  }
+}
+.arrow_center() {
+  &::after{
+    margin: 0 auto;
+  }
+}
+.arrow_color(@color) {
+  &::after{
+    border-color: @color;
+  }
+}
+.arrow_size(@WH) {
+  &::after{
+    .WH(@WH);
+  }
+}
+.arrow_up(@WH, @color) {
+  .arrow(@WH, @color);
+  &::after{
+    transform: rotate(-135deg);
+  }
+}
+.arrow_down(@WH, @color) {
+  .arrow(@WH, @color);
+  &::after{
+    transform: rotate(45deg);
+  }
+}
+.arrow_left(@WH, @color) {
+  .arrow(@WH, @color);
+  &::after{
+    transform: rotate(135deg);
+  }
+}
+.arrow_right(@WH, @color) {
+  .arrow(@WH, @color);
+  &::after{
+    transform: rotate(-45deg);
+  }
+}
+//三角形
+.trian_init() {
+  .WH(0);
+  border-style: solid;
+}
+.trian_T(@W, @H, @color) {
+  @_W: @W * 0.5;
+  .trian_init();
+  border-width: 0 @_W @H @_W;
+  border-color: transparent transparent @color transparent;
+}
+.trian_B(@W, @H, @color) {
+  @_W: @W * 0.5;
+  .trian_init();
+  border-width: @H @_W 0 @_W;
+  border-color: @color transparent transparent transparent;
+}
+.trian_L(@W, @H, @color) {
+  @_H: @H * 0.5;
+  .trian_init();
+  border-width: @_H @W @_H 0;
+  border-color: transparent @color transparent transparent;
+}
+.trian_R(@W, @H, @color) {
+  @_H: @H * 0.5;
+  .trian_init();
+  border-width: @_H 0 @_H @W;
+  border-color: transparent transparent transparent @color;
+}
+.trian_LT(@W, @H, @color) {
+  .trian_init();
+  border-width: @H @W 0 0;
+  border-color: @color transparent transparent transparent;
+}
+.trian_LB(@W, @H, @color) {
+  .trian_init();
+  border-width: @H 0 0 @W;
+  border-color: transparent transparent transparent @color;
+}
+.trian_RT(@W, @H, @color) {
+  .trian_init();
+  border-width: 0 @W @H 0;
+  border-color: transparent @color transparent transparent;
+}
+.trian_RT(@W, @H, @color) {
+  .trian_init();
+  border-width: 0 0 @H @W;
+  border-color: transparent transparent @color transparent;
+}

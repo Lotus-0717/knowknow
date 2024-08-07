@@ -40,6 +40,9 @@
 }
 .vw(@wW, @attr, @px) {
   @{attr}: 1vw * (@px / (@wW / 100));
+  @media (min-width: @wW) {
+    @{attr}: @px;
+  }
 }
 //
 .room(@val: 0) {
@@ -86,7 +89,8 @@
 .plus(@WH, @color: #000000) {
   position: relative;
   .WH(@WH);
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
     top: ~"calc(50% - 1px)";
@@ -102,21 +106,23 @@
     }
   }
 }
-.plus_color(@color){
-  &::before, &::after {
+.plus_color(@color) {
+  &::before,
+  &::after {
     background-color: @color;
   }
 }
 .plus_H(@H) {
   @H2: @H / 2;
-  &::before, &::after {
+  &::before,
+  &::after {
     height: @H;
     top: ~"calc(50% - @{H2})";
   }
 }
 //arrow
 .arrow(@WH, @color) {
-  &::after{
+  &::after {
     content: "";
     display: block;
     .WH(@WH);
@@ -127,41 +133,41 @@
   }
 }
 .arrow_center() {
-  &::after{
+  &::after {
     margin: 0 auto;
   }
 }
 .arrow_color(@color) {
-  &::after{
+  &::after {
     border-color: @color;
   }
 }
 .arrow_size(@WH) {
-  &::after{
+  &::after {
     .WH(@WH);
   }
 }
 .arrow_up(@WH, @color) {
   .arrow(@WH, @color);
-  &::after{
+  &::after {
     transform: rotate(-135deg);
   }
 }
 .arrow_down(@WH, @color) {
   .arrow(@WH, @color);
-  &::after{
+  &::after {
     transform: rotate(45deg);
   }
 }
 .arrow_left(@WH, @color) {
   .arrow(@WH, @color);
-  &::after{
+  &::after {
     transform: rotate(135deg);
   }
 }
 .arrow_right(@WH, @color) {
   .arrow(@WH, @color);
-  &::after{
+  &::after {
     transform: rotate(-45deg);
   }
 }

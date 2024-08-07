@@ -29,7 +29,7 @@
 //all
 body {
   letter-spacing: 1px;
-  font-weight: 300;
+  font-weight: 500;
 }
 .ctn1 {
   max-width: @maxW;
@@ -40,37 +40,11 @@ img {
 }
 //const
 .header {
+  height: 0;
   .nav_frame(); //選單
   .nav_btn(); //漢堡
   .header_logo {
     width: 200px;
-  }
-}
-.float_frame {
-  @media(min-width: @up_lg) {
-    > a {
-      transition: 0.3s;
-    }
-    &:hover {
-      > a {
-        &:hover {
-          transform: scale(1.05);
-        }
-        &:not(:hover) {
-          transform: scale(0.95);
-        }
-      }
-    }
-  }
-  @media (max-width: @lg) {
-    > a {
-      &._go {
-        background-color: #d6305c;
-      }
-      &._open {
-        background-color: #ff8200;
-      }
-    }
   }
 }
 //style
@@ -90,7 +64,7 @@ img {
     border-bottom: 1px solid #f6f6f6;
     font-size: 24px;
     padding: 30px 0;
-    @media(max-width: @sm) {
+    @media (max-width: @sm) {
       font-size: 22px;
       padding: 25px 0;
     }
@@ -98,7 +72,7 @@ img {
       transform: translateY(1px);
       margin-left: 15px;
       .plus(12px);
-      @media(max-width: @sm) {
+      @media (max-width: @sm) {
         .WH(10px);
       }
     }
@@ -106,15 +80,154 @@ img {
   .ntc_ctn {
     display: none;
     padding: 40px 20px;
-    @media(max-width: @sm) {
+    @media (max-width: @sm) {
       padding: 30px 10px;
     }
   }
   ul {
     line-height: 1.8;
     .ul_set(18px);
-    @media(max-width: @sm) {
+    @media (max-width: @sm) {
       .ul_set(16px);
     }
+  }
+}
+
+main {
+  position: relative;
+  > section {
+    position: relative;
+  }
+}
+
+.bg-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  transform: translate(-50%);
+  pointer-events: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  .vw(@md, width, 768px);
+  * {
+    pointer-events: all;
+  }
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 1;
+  .vw(@md, width, 768px);
+}
+
+.sec {
+  .container {
+    .vw(@md, padding-top, 50px);
+    .vw(@md, padding-bottom, 50px);
+    .vw(@md, padding-left, 60px);
+    .vw(@md, padding-right, 60px);
+  }
+  h3 {
+    margin: 0;
+    .vw(@md, font-size, 60px);
+    .vw(@md, margin-bottom, 30px);
+    text-align: center;
+  }
+  .inner-text {
+    .vw(@md, font-size, 32px);
+    text-align: justify;
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    .vw(@md, width, 300px);
+    .vw(@md, height, 75px);
+    .vw(@md, margin-top, 64px);
+    .vw(@md, font-size, 32px);
+  }
+  &:nth-child(odd) {
+    background-color: #065580;
+    color: #fff;
+  }
+  &:nth-child(even) {
+    background-color: #6db7de;
+    color: #0c5983;
+  }
+}
+
+#kv-sec {
+  background-color: #065580;
+  .vw(@md, height, 1260px);
+  .bg-container {
+    background-image: url(../img/kv.jpg);
+    background-size: 100% 100%;
+  }
+}
+
+#sec-1 {
+  .item-wrap {
+    display: flex;
+    justify-content: space-between;
+    .vw(@md, margin-top, 64px);
+    .item {
+      > div {
+        background-color: #ffe228;
+        margin: 0 auto;
+        border-radius: 1000px;
+        .vw(@md, width, 150px);
+        .vw(@md, height, 150px);
+      }
+      p {
+        text-align: center;
+        .vw(@md, margin-top, 16px);
+        .vw(@md, font-size, 32px);
+      }
+    }
+  }
+}
+
+#sec-4 {
+  .item-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .vw(@md, margin-top, 64px);
+    .vw(@md, gap, 40px);
+    .item {
+      > div {
+        background-color: #ffe228;
+        margin: 0 auto;
+        .vw(@md, width, 150px);
+        .vw(@md, height, 150px);
+      }
+      p {
+        text-align: center;
+        .vw(@md, margin-top, 16px);
+        .vw(@md, font-size, 32px);
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #6db7de;
+  color: #065580;
+  .vw(@md, height, 80px);
+  > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a {
+    .vw(@md, font-size, 24px);
   }
 }

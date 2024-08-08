@@ -78,6 +78,7 @@ $(function () {
       $("html, body").css("overflow", "auto");
       $(".toggle-btn").removeClass("-active");
       $("nav").removeClass("-active");
+      navOpen = !navOpen;
     });
 });
 // new img_onload(".kv_frame", function () {

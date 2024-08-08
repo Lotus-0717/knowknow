@@ -9,7 +9,7 @@
 @header_font_color: #000000;
 @header_H: 60px;
 @header_H_md: 60px;
-@header_H_sm: 50px;
+@header_H_sm: 60px;
 @nav_space: 12px; //選單間距
 @nav_theme: @org; //選單色系
 @nav_m: @lg;
@@ -27,6 +27,12 @@
 //params
 @maxW: 1200px;
 //all
+@font-face {
+  font-family: "MantouSans";
+  src: url("./MantouSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   letter-spacing: 1px;
   font-weight: 500;
@@ -38,13 +44,93 @@ body {
 img {
   display: block;
 }
+.mantouSans {
+  font-family: "MantouSans", sans-serif;
+}
 //const
-.header {
-  height: 0;
-  .nav_frame(); //選單
-  .nav_btn(); //漢堡
-  .header_logo {
-    width: 200px;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  height: 60px;
+  background-color: #065580;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  a {
+    font-size: 32px;
+    color: #fff;
+  }
+  .toggle-btn {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    span {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 5px;
+      border-radius: 1000px;
+      background-color: #fff;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &:nth-child(3) {
+        top: 100%;
+        transform: translateY(-100%);
+      }
+    }
+    &.-active {
+      span {
+        &:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%) rotate(-45deg);
+        }
+        &:nth-child(3) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  padding-top: 100px;
+  background-color: #065580;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+  overflow: auto;
+  &.-active {
+    transform: translateY(0);
+  }
+  ul {
+    text-align: center;
+    padding: 0;
+    li {
+      list-style-type: none;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+      cursor: pointer;
+    }
   }
 }
 //style
@@ -128,8 +214,8 @@ main {
   .container {
     .vw(@md, padding-top, 50px);
     .vw(@md, padding-bottom, 50px);
-    .vw(@md, padding-left, 60px);
-    .vw(@md, padding-right, 60px);
+    .vw(@md, padding-left, 30px);
+    .vw(@md, padding-right, 30px);
   }
   h3 {
     margin: 0;
@@ -137,16 +223,21 @@ main {
     .vw(@md, margin-bottom, 30px);
     text-align: center;
   }
+  h4 {
+    margin: 0;
+    .vw(@md, font-size, 42px);
+    .vw(@md, margin-bottom, 30px);
+    text-align: center;
+  }
   .inner-text {
     .vw(@md, font-size, 32px);
-    text-align: justify;
+    text-align: center;
   }
   .btn {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 1000px;
-    border: 1px solid #fff;
     margin: 0 auto;
     .vw(@md, width, 300px);
     .vw(@md, height, 75px);
@@ -156,10 +247,16 @@ main {
   &:nth-child(odd) {
     background-color: #065580;
     color: #fff;
+    .btn {
+      border: 2px solid #fff;
+    }
   }
   &:nth-child(even) {
     background-color: #6db7de;
     color: #0c5983;
+    .btn {
+      border: 2px solid #0c5983;
+    }
   }
 }
 
@@ -173,13 +270,22 @@ main {
 }
 
 #sec-1 {
+  h3 {
+    .vw(@md, margin-bottom, 0px);
+  }
   .item-wrap {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     .vw(@md, margin-top, 64px);
+    .vw(@md, grid-gap, 16px);
     .item {
+      background-color: #ffe228;
+      width: 100%;
+      .vw(@md, border-radius, 30px);
+      .vw(@md, padding-top, 30px);
+      .vw(@md, padding-bottom, 30px);
       > div {
-        background-color: #ffe228;
+        background-color: #00a9ba;
         margin: 0 auto;
         border-radius: 1000px;
         .vw(@md, width, 150px);
@@ -190,18 +296,25 @@ main {
         .vw(@md, margin-top, 16px);
         .vw(@md, font-size, 32px);
       }
+      .inner-text {
+        .vw(@md, font-size, 24px);
+        margin-top: 0;
+      }
     }
   }
 }
 
-#sec-4 {
+#sec-6 {
   .item-wrap {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     .vw(@md, margin-top, 64px);
-    .vw(@md, gap, 40px);
     .item {
+      width: 33.3%;
+      .vw(@md, padding-left, 24px);
+      .vw(@md, padding-right, 24px);
+      .vw(@md, margin-bottom, 24px);
       > div {
         background-color: #ffe228;
         margin: 0 auto;

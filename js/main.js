@@ -44,19 +44,42 @@ var ntc = new Collapse({
   container: ".ntc_frame",
   button: ".ntc_btn",
   active: ".plus_btn",
-  collapse: ".ntc_ctn"
-})
+  collapse: ".ntc_ctn",
+});
 ntc.init();
 ntc.button.forEach(function (button) {
-  button.addEventListener("click", function () {
-    moveTo(button.container);
-  }, false)
-})
+  button.addEventListener(
+    "click",
+    function () {
+      moveTo(button.container);
+    },
+    false
+  );
+});
 //init
 // new Sto().init();
 $(function () {
-  // new Spx().init(); 
-})
+  // new Spx().init();
+  let navOpen = false;
+  $(".toggle-btn").on("click", function () {
+    $(this).toggleClass("-active");
+    $("nav").toggleClass("-active");
+    if (navOpen) {
+      $("html, body").css("overflow", "auto");
+    } else {
+      $("html, body").css("overflow", "hidden");
+    }
+    navOpen = !navOpen;
+  });
+
+  $("nav")
+    .find("li")
+    .on("click", function () {
+      $("html, body").css("overflow", "auto");
+      $(".toggle-btn").removeClass("-active");
+      $("nav").removeClass("-active");
+    });
+});
 // new img_onload(".kv_frame", function () {
 //   $(DOM("[kv]")).addClass("active");
 // })

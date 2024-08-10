@@ -216,6 +216,10 @@ main {
     .vw(@md, padding-bottom, 50px);
     .vw(@md, padding-left, 30px);
     .vw(@md, padding-right, 30px);
+    > img {
+      .vw(@md, border-radius, 20px);
+      .vw(@md, margin-top, 40px);
+    }
   }
   h3 {
     margin: 0;
@@ -231,6 +235,8 @@ main {
   }
   .inner-text {
     .vw(@md, font-size, 32px);
+  }
+  .center {
     text-align: center;
   }
   .btn {
@@ -288,8 +294,14 @@ main {
         background-color: #00a9ba;
         margin: 0 auto;
         border-radius: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .vw(@md, width, 150px);
         .vw(@md, height, 150px);
+        img {
+          width: 60%;
+        }
       }
       p {
         text-align: center;
@@ -311,10 +323,10 @@ main {
     flex-wrap: wrap;
     .vw(@md, margin-top, 64px);
     .item {
-      width: 33.3%;
+      width: 100%;
       .vw(@md, padding-left, 24px);
       .vw(@md, padding-right, 24px);
-      .vw(@md, margin-bottom, 24px);
+      .vw(@md, margin-bottom, 64px);
       > div {
         background-color: #ffe228;
         margin: 0 auto;
@@ -333,12 +345,11 @@ main {
 footer {
   background-color: #6db7de;
   color: #065580;
-  .vw(@md, height, 80px);
+  .vw(@md, padding-top, 20px);
+  .vw(@md, padding-bottom, 20px);
   > div {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
   }
   a {
     .vw(@md, font-size, 24px);

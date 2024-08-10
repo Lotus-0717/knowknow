@@ -608,6 +608,20 @@ main > section {
     padding-right: 30px;
   }
 }
+.sec .container > img {
+  border-radius: 2.60416667vw;
+  margin-top: 5.20833333vw;
+}
+@media (min-width: 768px) {
+  .sec .container > img {
+    border-radius: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .sec .container > img {
+    margin-top: 40px;
+  }
+}
 .sec h3 {
   margin: 0;
   font-size: 7.8125vw;
@@ -642,12 +656,14 @@ main > section {
 }
 .sec .inner-text {
   font-size: 4.16666667vw;
-  text-align: center;
 }
 @media (min-width: 768px) {
   .sec .inner-text {
     font-size: 32px;
   }
+}
+.sec .center {
+  text-align: center;
 }
 .sec .btn {
   display: flex;
@@ -757,6 +773,9 @@ main > section {
   background-color: #00a9ba;
   margin: 0 auto;
   border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 19.53125vw;
   height: 19.53125vw;
 }
@@ -769,6 +788,9 @@ main > section {
   #sec-1 .item-wrap .item > div {
     height: 150px;
   }
+}
+#sec-1 .item-wrap .item > div img {
+  width: 60%;
 }
 #sec-1 .item-wrap .item p {
   text-align: center;
@@ -806,10 +828,10 @@ main > section {
   }
 }
 #sec-6 .item-wrap .item {
-  width: 33.3%;
+  width: 100%;
   padding-left: 3.125vw;
   padding-right: 3.125vw;
-  margin-bottom: 3.125vw;
+  margin-bottom: 8.33333333vw;
 }
 @media (min-width: 768px) {
   #sec-6 .item-wrap .item {
@@ -823,7 +845,7 @@ main > section {
 }
 @media (min-width: 768px) {
   #sec-6 .item-wrap .item {
-    margin-bottom: 24px;
+    margin-bottom: 64px;
   }
 }
 #sec-6 .item-wrap .item > div {
@@ -860,18 +882,22 @@ main > section {
 footer {
   background-color: #6db7de;
   color: #065580;
-  height: 10.41666667vw;
+  padding-top: 2.60416667vw;
+  padding-bottom: 2.60416667vw;
 }
 @media (min-width: 768px) {
   footer {
-    height: 80px;
+    padding-top: 20px;
+  }
+}
+@media (min-width: 768px) {
+  footer {
+    padding-bottom: 20px;
   }
 }
 footer > div {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 footer a {
   font-size: 3.125vw;

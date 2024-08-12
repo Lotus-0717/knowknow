@@ -864,18 +864,19 @@ main > section {
     height: 150px;
   }
 }
-#sec-6 .item-wrap .item p {
+#sec-6 .item-wrap .item a {
   text-align: center;
+  display: block;
   margin-top: 2.08333333vw;
   font-size: 4.16666667vw;
 }
 @media (min-width: 768px) {
-  #sec-6 .item-wrap .item p {
+  #sec-6 .item-wrap .item a {
     margin-top: 16px;
   }
 }
 @media (min-width: 768px) {
-  #sec-6 .item-wrap .item p {
+  #sec-6 .item-wrap .item a {
     font-size: 32px;
   }
 }
